@@ -11,69 +11,403 @@
   <h1>Ejercicios de Programación en JavaScript</h1>
   <script>
     /* 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFunción("Hola Mundo") devolverá 10 */
+    /*function contarCaracteres(texto){
+      if(isNaN(texto)){
+        console.log(texto.length);
+    }else{
+        console.log(`El parametro ingresado: ${texto} esta en un formato invalido`);
+    }
+  }*/
+  const contarCaracteres = (cadena = "") => 
+    (!cadena)
+      ?console.log(`El parametro ingresado: ${texto} esta en un formato invalido`)
+      :console.log(cadena.length);
+
+  let palabra = "Mauro Programa";
+  //contarCaracteres(palabra);
+  //contarCaracteres(true);
 
 
-    /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
 
 
+
+
+
+  /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
+
+    /*function recortarTexto(texto, i , j){
+      return texto.substring(i , j);
+    }
+    
+    */
+   console.log("Ejercicio 2");
+   let palabraej2 = 'Hola Mundo';
+   let i = 0;
+   let j = 4;
+   const recortarTexto = (texto = "", i = undefined, j = undefined)=>
+    (!texto)
+    ?console.log(`Usted a ingresado un valor invalido`)
+    :(j === undefined)
+      ?console.warn("No ingresaste la longitud a cortar")
+      :console.log(texto.substring(i, j));
+   
+   //recortarTexto(palabraej2, i , j);
+    
+   
 
     /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.
-     miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
+    miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
 
+    /*function separadordetxto(texto){
+      return texto.split(" ");
+    }
+    let textoej3 = "Mauro Programa";
+    let xej3 = separadordetxto(textoej3);
+    console.log(xej3);*/
+    console.warn("Ejercicio 3");
+    const cadenaAArreglo = (texto = "",separador = undefined)=>
+      (!texto)
+      ?console.warn(`El texto ${texto}: no es una cadena de texto valida`)
+      :(separador === undefined)
+        ?console.warn(`El separador ${separador} que usted a ingresado es invalido !!!USUARIO MALO!!!`)
+        :console.log(texto.split(separador));
+      
+    let separador = " ", texto = "Mauro Programa";
+    // cadenaAArreglo(texto, separador);
 
 
     /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
+    console.warn("Ejercicio 4");
+   /* let iej4 = 0;
+    textoej4 = "Mauro esta aprendiendo a programar para la Pipi"
+    function repetirtexto(textoej4 , iej4){
+      while(iej4 < 3){
+        console.log(textoej4);
+        i++;
+      }
+    }*/ 
+    const repetirTexto = (textoej4 = "", iej4 = undefined)=>{
+      let textoaux = "";
+      if(!textoej4) return console.log("No ha ingresado una cadena de texto !!!USUARIO MALO!!!");
+      
+      if(iej4 === undefined) return console.log("No ha ingresado el numero a repetir el texto !!!USUARIO MALO!!!");
+      
+      if(iej4 <= 0) return console.error("!!! USUARIO MALO !!! Ingrese un nuemero mayor a 0");
 
-
-
+      for(let i = 0; i < iej4; i++) textoaux += " " + textoej4;
+      
+      console.log(textoaux.trimStart().trimEnd());
+    }
+    
+    // repetirTexto("Mauro programa para la Pipi Pomelo", 2);
+    
+    
+    
     /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
-
-
+/*
+    let palabraej5 = "Hola Mundo";
+    function invertirPalabra(palabraej5){
+      let palinvertida = [];
+      for(let i = palabraej5.length ; i != 0 ; i--){
+        palinvertida.push(palabraej5[i - 1]);
+      }
+      
+      return palinvertida.join().toString();
+    }
+    console.log("Ejercicio 5");
+    console.log(invertirPalabra(palabraej5));
+*/
+/*
+function invertirPalabra(palabraej5){
+  return palabraej5.reverse();
+}
+    console.log(invertirPalabra());
+    */
+   /*
+   let palabraej5 = "Hola Mundo"
+   function invertirPalabra(pala){
+      let rev = "";
+      for(let i = pala.length -1 ; i >= 0 ; i--){
+        rev += pala[i];
+      }
+      return rev;
+    }
+    */
+   
+   const invertirPalabra = (pala)=>
+   (!pala)
+   ?console.warn("!!! USUARIO MALO !!! La cadena que ha ingresado es falsa")
+   :(!isNaN(pala))
+   ?console.warn("!!! USUARIO MALO !!! Lo que ha ingresado no es una cadena")
+   :console.log(pala.split("").reverse().join(""));
+   
+   
+    let palabraej5 = "Hola Mundo"
+    console.warn("Ejercicio 5");
+   // invertirPalabra(palabraej5);
 
     /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
 
+    let frase = "hola mundo adios mundo";
+    let clave = "mundo";
+    function contadordepalabras(frase , clave){
+      let aux = frase.split(" ");
+      //let i = 0;
+      let c = 0;
+      aux.forEach(element => {
+        if(element === clave) c++;
+      });
+      return c;
+    }
+    console.warn("Ejercicio 6 v1");
+    console.log(`La palabra ${clave} se repite ` + contadordepalabras(frase, clave) + " veces");
 
+    console.warn("Ejercicio 6 v2");
+    const textoEnCadena = (frase = "", clave = "")=>{
+      if(!frase) return console.warn("!!! USUARIO MALO !!! La cadena que ha ingresado es falsa");
+      
+      if(!clave) return console.warn("!!! USUARIO MALO !!! La clave que ha ingresado es falsa");
+      
+      let i = 0,
+        contador = 0;
+      while(i !== -1){
+        i = frase.indexOf(clave, i);
+        if(i !== -1){
+          i++;
+          contador++;
+        }
+      }
+      return console.info(`La palabra ${clave} se repite ${contador} veces`);
+}
+  textoEnCadena("hola mundo adios mundo", "mundo");
 
     /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
+    console.warn("Ejercicio 7 de palíndromo");
+/*
+    let palindromo = "Salas";
+    function pali(palab){
+      let aux = invertirPalabra(palab);
+      if(aux.toUpperCase() === palab.toUpperCase()) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    console.log(pali(palindromo));
+*/
 
+    const palindromo = (palab = "") =>{
+    
+      if(!palab) return console.warn("!!! USUARIO MALO !!! No ingresaste una palabra o frase");
+      
+      palab = palab.toLowerCase();
+      let alReves = palab.split("").reverse().join("");
+
+      return (palab === alReves)
+        ? console.info(`Sí es palíndromo, Palabra original ${palab}, palabra al revés ${alReves}`)
+        : console.info(`No es palíndromo, Palabra original ${palab}, palabra al revés ${alReves}`)
+    }
+
+    palindromo("hola mundo");
 
 
     /* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5 */
 
+    console.warn("Ejercicio 8");
+   /* 
+    let str = "xyz1, xyz2, xyz3, xyz4, xyz5";
+    let eliminar = "xyz";
+    let straux = "";
+    function eliminarPatron(obj , eliminar){
+      for(let i = 0 ; i < obj.length -2 ; i++){
+        if(obj[i] === eliminar[0] && obj[i + 1] === eliminar[1] && obj[i + 2] === eliminar[2]){
+          if((i + 3 ) < obj.length -2){
+            straux += obj.substring(i + 3, i + 4) + ", ";
+         }else{
+            straux += obj.substring(i + 3, i + 4);
+         }
+        }
+      }
+    
+      return straux;
+    }
+    console.log(eliminarPatron(str, eliminar));
+    */
+    const eliminarCaracteres = (texto = "", patron = "") =>
+      (!texto)
+        ?console.warn("No ingresaste un texto")
+        :(!patron)
+          ?console.warn("No ingresaste un patron de caracteres")
+          :console.info(texto.replace(new RegExp(patron, "ig"),""));
+
+    eliminarCaracteres("Mau9r4o4 p5r3og3ra1ma p0ar2a la3 P5ip5i, T7e9 a8mo5 h2i1ja!", "[0-9]");
+
 
 
     /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600 */
+    console.warn("Ejercicio 9");
 
-
+    /*
+    function randomNum(){
+      return Math.random() * (600 - 501) + 501;
+    }
+    */
+    
+    const randomNum =() => Math.round(Math.random() * (600 - 501) + 501);
+  
+    console.log(randomNum());
 
     /* 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true  */
 
+    /*
+    let num = "2001";
+    function capi(n){
+      let aux10 = n.split('').reverse();
+      aux10 = aux10.join('');
+      parseInt(aux10);
+      if(aux10 === n){
+        return true;
+      }else{
+        return false;
+      }
+      
+    }
+    console.log(capi(num));
+    */
+   
+    console.warn("Ejercicio 10");
+   
+    const capicua = (num = null) => {
+      if(typeof num != "number") return console.warn("!!! USUARIO MALO !!! Usted ingreso un valor no numerico!");
+      if(num < 9) return console.warn("Debe ingresar un numero de 2 cifras o mas");
+      (num === null)
+        ?console.warn("!!! USUARIO MALO !!! No ingreso ningun valor!")
+        :(num.toString() === num.toString().split("").reverse().join(""))
+            ? console.log(true)
+            : console.log(false);
 
-
+    }
+   
+    capicua(101.101);
+   
+   
     /* 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120 */
 
+    /*console.warn("Ejercicio 11")
+    let num11 = 5;
 
+    function facto(n11){
+      let aux = 1;
+      for(let i = 0 ; i < n11 ; i++){
+        aux *= (i+1);
+      }
+      return aux;
+    }
+    
+    console.log(facto(num11));
+    */
+
+    console.warn("Ejercicio 11");
+
+    const resultadoFacto = (num = undefined) => {
+      if(num === undefined) return console.warn("Debe ingresar un numero para poder calcular usuario malo");
+      if(typeof num !== "number") return console.error("Ustud no ingreso un numero usuario malo");
+      if(num === 0) return console.error('No se puede calcular el factorial de "0" usuario malo');
+      if(Math.sign(num) === -1) console.error('No se puede calcular el factorial de un numero negativo usuario malo');
+      let aux = 1;
+      for(let i = 0 ; i < num ; i++){
+        aux *= (i+1);
+      }
+      console.log(`El resultado factorial de ${num} es igual a : ${aux}`)
+    }
+    
+    resultadoFacto(10);
 
     /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true */
+    console.warn("Ejercicio 12");
 
-
-
+    //let num12 = 19;
+  /*  function prim(n12){
+      let bandera = false;
+      for(let i = 1 ; i < n12 ; i++){
+        if(i != 1){
+          if(n12 % i){  // si el resultado es 0 se va por falso
+          bandera = true;
+          }else{
+          return false;
+          }
+        }
+      }
+       return bandera;
+     }*/
+     
+     const prim = (num12) => {
+      if(typeof num12 !== "number") return console.error("Usuario malo ingrese un numero");
+      if(num12 < 1) return console.error("Usuario malo ingrese numeros posivtivos");
+      if(num12 === 1) return console.error("No es primo");
+      if(num12 === 2) return console.log("El numero es primo");
+       let contador = 0;
+       for(let i = 2 ; i < num12; i++){
+         if((num12 % i) === 0) return console.log("No es primo");
+        }
+        console.log("El numero es primo");
+      }
+     prim(7);
+      
     /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar */
 
-
+    console.log("Ejercicio 13");
+    let num13 = 29;
+    function paroimpar(n13){
+      bandera = "Impar";
+      if(n13 != 0 ){
+        if(!(n13%2)){
+          bandera = "Par";
+        }
+      }else{
+        return "No sea tan huevon de poner 0 en el ingreso";
+      }
+      return bandera;
+    }
+    console.log(paroimpar(num13));
 
     /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F */
+   
+   
+    // mi funcion hace validaciones para luego netrar en la logica y preguntar si el grado es C o F
+    //si es alguno de los dos luego determina cual es y devuelve el valor correspondiente
+    console.warn("Ejericio 14");
+    const convertir = ( num14 = null, grados = "")=>{
+      if(num14 === null) return console.error("Usted no ingreso un valor numerico");
+      if(typeof num14 !== "number") return console.error("Lo que a ingresado no es un numero");
+      if(grados === "") return console.warn("Usted no ha ingresado dato de los grados");
+      (!(grados.toUpperCase() === "C" || grados.toUpperCase() === "F")) //pregunta si el caracter ingresado es c o f para validar q1ue no ingrese cualquier string
+           ?console.error("Usted no ha ingresado un valor valido de grados")
+           :(grados.toUpperCase() === "C") // define que resultado se va a devolver
+              ?console.log((num14 * 1.8 + 32) + " F")
+              :console.log(((num14 - 32) * 0.5556) + "C");
 
+    }
 
-
+    convertir(-45,"f");
+  
     /* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10 */
 
 
 
     /* 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800 */
-
-
-
+    console.warn("Ejercicio 16")-
+    
+    const aplicarDescuento = (monto = null, desc = null) => {
+      //invierto la logica para poder poner el return en la condicion true del if y asi organizar mejor mi codigo
+      if(!(typeof monto ==="number" && typeof desc ==="number")) return console.error("Por favor ingrese datos de tipo number") 
+      if(monto < 1) return console.error("Usted a ingresado un monto negativo, por favor ingrese el valor del producto")
+      //invierto la logica para poder usar el return en la parte positiva
+      if(!(0 > desc <= 100)) return console.error("El valor de descuento debe ser un numero entre 0 y 100, por favor ingrese una valor valido de descuento")
+      
+      console.log(monto * (desc / 100));
+    }
+    aplicarDescuento(1000 , 20)
     /* 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020) */
 
 
@@ -131,6 +465,112 @@
 
         * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
         */
+        console.log("Ejercicio 27");
+
+        let peli1 = ["tt6443346", "Black Adam", "Jaume Collet-Serra", 2022, ["EEUU"], ["Action", "Adventure", "Fantasy"], 7.1];
+        let peli2 = ["tt11198330","La casa del dragón","Ryan J. Condal & George R.R. Martin",2022,["Reino Unido", "España", "Portugal"], ["Action", "Adventure", "Drama"], 8.6];
+        let peli3 = ["tt8415836","El gabinete de curiosidades de Guillermo del Toro","Guillermo del Toro",2022,["Argentina", "Mexico", "colombia"],["Drama", "Horror", "Mystery"], 7.5 ];
+        let databasepeliculas = [peli1, peli2, peli3];
+
+             
+
+        function Pelicula(p) {
+
+          this.id = verificarId(p[0]);
+          this.titulo = veridicarTitulo(p[1]);
+          this.director = veridicarDirector(p[2]);
+          this.año = veridicarAño(p[3]);
+          this.pais = verificarPais(p[4]);
+          this.genero = verificarGeneros(p[5]);
+          this.clasi = verificarClasi(p[6]);
+          this.ficha_tecnica = function(){
+            console.log(`Ficha Tecnica de la pelicula consultada ${this.id}, ${this.titulo}, ${this.director}, ${this.año}, ${this.pais}, ${this.genero}, ${this.clasi}`);
+          }
+        }
+        
+        let generosdisponibles = ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"];
+        
+        function verificarId(id_imdb){
+          let i;
+          
+          for(i = 0 ; i < 2 ; i++){
+            if(!isNaN(id_imdb[i])) return console.log(`El Id: ${id_imdb} ingresado es inválido`);
+          }
+          for(i ; i < id_imdb.length ; i++){
+            if(isNaN(id_imdb[i])) return console.log(`El Id: ${id_imdb} ingresado es inválido`); 
+          }
+          return id_imdb;
+        } 
+
+        function veridicarTitulo(v_titulo){
+          if(v_titulo.length < 101){
+            return v_titulo;
+          }else{
+            return console.log(`El tiutlo: ${v_titulo} es inválido`)
+          }
+        }
+
+        function veridicarDirector(v_director){
+          if(v_director.length < 51){
+            return v_director;
+          }else{
+            return console.log(`El tiutlo: ${v_director} es inválido`)
+          }
+        }
+
+        function veridicarAño(v_año){
+            if(v_año > 999 && v_año < 10000){
+              return v_año;
+            } else {
+              return console.log(`El año: ${v_año} ingresado es inválido`);
+            }
+        }
+        
+        function verificarPais(v_pais){
+          if(Array.isArray(v_pais)){
+            return v_pais;
+          } else {
+            return console.log(`Usted a ingresado datos en un formato incorrecto, por favor introduzca un array en este campo`);
+          }
+        }
+
+        function verificarGeneros(v_genero){
+          if(Array.isArray(v_genero)){
+            let banderagenero;
+            v_genero.forEach(element => {
+              banderagenero = false;
+              if(banderagenero === false){
+                  for(let i = 0 ; i < generosdisponibles.length ; i++){
+                    if(element === generosdisponibles[i]){
+                      banderagenero = true;
+                     return;
+                    }
+                  }
+              }
+            });
+              if(banderagenero != true) return console.log(`El genero: ${element} no es valido`);
+              return v_genero;  
+          }  else {
+            return console.log(`Usted a ingresado datos en un formato incorrecto, por favor introduzca un array en este campo`);
+          }
+        }
+
+        function verificarClasi(v_clasi){
+            if(v_clasi >= 0 && v_clasi < 10.1 ){
+              return v_clasi;
+            }else{
+              return console.log(`El valor: ${v_clasi} es incorrecto.`);
+            }
+        }
+        
+        const p1 = new Pelicula(peli1);
+        const p2 = new Pelicula(peli2);
+        const p3 = new Pelicula(peli3);
+        
+        p1.ficha_tecnica();
+        p2.ficha_tecnica();
+        p3.ficha_tecnica();
+
   </script>
 </body>
 
